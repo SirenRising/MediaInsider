@@ -1,0 +1,63 @@
+/* Agrega tus estilos personalizados aquí */
+
+.bg-purple {
+    background-color: #5A3FCF;
+}
+
+.bg-blue {
+    background-color: #3498DB;
+}
+
+.card-header.bg-magenta {
+    background-color: #E74C3C;
+}
+
+.btn-magenta {
+    background-color: #E74C3C;
+    border-color: #E74C3C;
+    color: #FFFFFF;
+    font-weight: bold;
+}
+
+footer {
+    background-color: #333333;
+    color: #FFFFFF;
+    padding: 20px 0;
+}
+
+.svg-image {
+    width: 20px;
+    height: 15px;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.navbar-brand {
+    margin-right: 5px;
+}
+
+.navbar-logo-container {
+    display: flex;
+    align-items: center; /* Alinear verticalmente el logo */
+    justify-content: flex-end; /* Alinear a la derecha */
+    width: 100%; /* Opcional, asegura que el contenedor ocupe todo el ancho */
+}
+
+.navbar-spacer {
+    flex-grow: 10; 
+}
+
+.bg-purple {
+	background-color: #70107E;
+    color: white;
+	border-color: #70107E;
+}
+
+.custom-bg-color {
+    background-color: #70107E;
+    
+    
+    
+}

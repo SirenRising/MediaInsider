@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<bean:beans xmlns:bean="http://www.springframework.org/schema/beans"
+	xmlns:xsi-="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://www.springframework.org/schema/security"
+	xsi-:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+						 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd">
+	<!-- Definir el PasswordEncoder como bean -->
+	<bean:bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+	<http auto-config="true">
+		<intercept-url pattern="/inicio"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/navbar"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/musica"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/pelicula"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/podcast"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/serie"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/agregarresmusica"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/agregarrespelicula"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/agregarrespodcast"
+			access="hasAnyAuthority('Usuario')" />
+		<intercept-url pattern="/agregarresserie"
+			access="hasAnyAuthority('Usuario')" />
+
+		<intercept-url pattern="/" access="permitAll" />
+
+
+		<!-- Formulario login -->
+		<form-login login-page="/login"
+			authentication-failure-url="/error"
+			username-parameter="Usuario"
+			password-parameter="Password" />
+		<csrf disabled="true" />
+		<logout logout-success-url="/login" />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider>
+			<password-encoder ref="passwordEncoder" />
+			<jdbc-user-service data-source-ref="dataSource"
+				users-by-username-query="SELECT nombreUsuario as usuario, passUsuario as password, 1 as enabled from usuarios where nombre= ?"
+				authorities-by-username-query="SELECT nombreUsuario as usuario, rol as authority from usuarios where nombre= ?" />
+			<user-service>
+				<user name="user" authorities="USER"
+					password="user" />
+			</user-service>
+		</authentication-provider>
+	</authentication-manager>
+
+</bean:beans>
